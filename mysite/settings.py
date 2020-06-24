@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'checkars.apps.CheckarsConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
