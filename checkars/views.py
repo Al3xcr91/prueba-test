@@ -1,19 +1,27 @@
-from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from checkars.serializers import UserSerializer, GroupSerializer
+from checkars import models
+from checkars import serializers
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class CheckarsSiteViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows users to be viewed or edited.
+    API endpoint that allows Checkars Cars site to be viewed.
     """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
+    queryset = models.CheckarsSite.objects.all()
+    serializer_class = serializers.CheckarsSiteSerializer
 
 
-class GroupViewSet(viewsets.ModelViewSet):
+class CheckarsSiteViewSetById(viewsets.ModelViewSet):
     """
-    API endpoint that allows groups to be viewed or edited.
+    API endpoint that allows Checkars Cars site to be viewed or edited.
     """
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
+    queryset = models.CheckarsSiteByID.objects.all()
+    serializer_class = serializers.CheckarsSiteSerializerById
+
+
+class MeliItemView(viewsets.ModelViewSet):
+    """
+    API endpoint that allows Meli Item site to be viewed or edited.
+    """
+    queryset = models.MeliItem.objects.all()
+    serializer_class = serializers.MeliItemSerializer

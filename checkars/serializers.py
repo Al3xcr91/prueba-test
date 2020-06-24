@@ -1,14 +1,29 @@
-from django.contrib.auth.models import User, Group
+from checkars import models
 from rest_framework import serializers
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class CheckarsSiteSerializer(serializers.ModelSerializer):
+    """
+        Test simulator Checkars Site
+    """
     class Meta:
-        model = User
-        fields = ['url', 'username', 'email', 'groups']
+        model = models.CheckarsSite
+        fields = '__all__'
 
 
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
+class CheckarsSiteSerializerById(serializers.ModelSerializer):
+    """
+        Test simulator Checkars Site with _id
+    """
     class Meta:
-        model = Group
-        fields = ['url', 'name']
+        model = models.CheckarsSiteByID
+        fields = '__all__'
+
+
+class MeliItemSerializer(serializers.ModelSerializer):
+    """
+        Test simulator Meli Site
+    """
+    class Meta:
+        model = models.MeliItem
+        fields = '__all__'
