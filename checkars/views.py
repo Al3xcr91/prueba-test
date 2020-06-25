@@ -20,7 +20,7 @@ class CheckarsSiteViewSet(viewsets.ModelViewSet):
             serializer = serializers.CheckarsSiteSerializer(car)
             return Response(serializer.data)
         else:
-            return Response('El car_id no existe')
+            return Response({'Error msg': 'El car_id no existe'}, status=400)
 
 
 class CheckarsSiteViewSetById(viewsets.ModelViewSet):
@@ -40,9 +40,9 @@ class CheckarsSiteViewSetById(viewsets.ModelViewSet):
             instance.save()
             return Response(serializer.data)
         elif pk == '5e14f581bf0d686228f6436b':
-            return Response('Error: El auto no se puede actualizar')
+            return Response({'Error msg': 'El auto no se puede actualizar'}, status=400)
         else:
-            return Response('El _id no existe')
+            return Response({'Error msg': 'El _id no existe'}, status=400)
 
 
     def retrieve(self, request, pk=None):
@@ -70,15 +70,15 @@ class MeliItemView(viewsets.ModelViewSet):
                 instance.save()
                 return Response(serializer.data)
             else:
-                return Response('El seller_id no existe o es incorrecto')
+                return Response({'Error msg': 'El seller_id no existe o es incorrecto'}, status=400)
         elif pk == 'MLA851699686':
             serializer = serializers.MeliItemSerializer(data=request.data)
             serializer.is_valid(raise_exception=True)
             if request.data.get('seller_id') != '222222':
-                return Response('El seller_id no existe o es incorrecto')
-            return Response('La publicación está pausada, no se puede actualizar')
+                return Response({'Error msg': 'El seller_id no existe o es incorrecto'}, status=400)
+            return Response({'Error msg': 'La publicación está pausada, no se puede actualizar'}, status=400)
         else:
-            return Response('El mlid no existe')
+            return Response({'Error msg': 'El mlid no existe'}, status=400)
 
     def retrieve(self, request, pk=None):
         return Response('Método no permitido')
@@ -97,7 +97,7 @@ class MeliApi(viewsets.ModelViewSet):
             serializer = serializers.MeliApiSerializer(car)
             return Response(serializer.data)
         else:
-            return Response('El car_id no existe')
+            return Response({'Error msg': 'El mlid no existe'}, status=400)
 
     def update(self, request, pk=None):
         return Response('Método no permitido')
