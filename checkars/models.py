@@ -20,7 +20,12 @@ class CheckarsSiteByID(models.Model):
 
 class MeliItem(models.Model):
     mlid = models.CharField(primary_key=True, max_length=50)
-    status = models.CharField(max_length=10)
+    status = models.CharField(max_length=10, default='active')
     precio = models.FloatField()
     kilometros = models.IntegerField()
+    seller_id = models.IntegerField()
+
+class MeliApi(models.Model):
+    mlid = models.CharField(primary_key=True, max_length=50)
+    status = models.CharField(max_length=20, default='active')
     seller_id = models.IntegerField()
