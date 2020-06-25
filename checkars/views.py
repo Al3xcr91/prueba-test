@@ -22,6 +22,12 @@ class CheckarsSiteViewSet(viewsets.ModelViewSet):
         else:
             return Response({'Error_msg': 'El car_id no existe'}, status=400)
 
+    def post(self, request, pk=None):
+        return Response('Método no permitido')
+
+    def delete(self, request, pk=None):
+        return Response('Método no permitido')
+
 
 class CheckarsSiteViewSetById(viewsets.ModelViewSet):
     """
@@ -49,6 +55,9 @@ class CheckarsSiteViewSetById(viewsets.ModelViewSet):
         return Response('Método no permitido')
 
     def post(self, request, pk=None):
+        return Response('Método no permitido')
+
+    def delete(self, request, pk=None):
         return Response('Método no permitido')
 
 
@@ -83,9 +92,13 @@ class MeliItemView(viewsets.ModelViewSet):
     def retrieve(self, request, pk=None):
         return Response('Método no permitido')
 
+    def delete(self, request, pk=None):
+        return Response('Método no permitido')
 
     def get(self, request, pk=None):
         return Response('Método no permitido')
+
+
 class MeliApi(viewsets.ModelViewSet):
     queryset = models.MeliApi.objects.all()
     serializer_class = serializers.MeliApiSerializer
@@ -103,4 +116,7 @@ class MeliApi(viewsets.ModelViewSet):
         return Response('Método no permitido')
 
     def get(self, request, pk=None):
+        return Response('Método no permitido')
+
+    def delete(self, request, pk=None):
         return Response('Método no permitido')
