@@ -37,9 +37,9 @@ class CheckarsSiteViewSetById(viewsets.ModelViewSet):
     serializer_class = serializers.CheckarsSiteSerializerById
 
     def update(self, request, pk=None):
+        serializer = serializers.CheckarsSiteSerializerById(data=request.data)
+        serializer.is_valid(raise_exception=True)
         if pk == '5e14f581bf0d686228f6436a' or pk == '5e14f581bf0d686228f6436c':
-            serializer = serializers.CheckarsSiteSerializerById(data=request.data)
-            serializer.is_valid(raise_exception=True)
             instance = self.get_object()
             instance.precio = request.data.get("precio")
             instance.kilometros = request.data.get("kilometros")
